@@ -53,6 +53,7 @@ app.include_router(comment_router.router)
 
 origins_allowed = [
     'http://localhost:3000',
+    'http://localhost:5173',
     'https://localhost:5173'
 ]
 
