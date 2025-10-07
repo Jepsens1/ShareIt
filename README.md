@@ -1,6 +1,6 @@
 # Mini Social Media application
 A minimal social media project built with Python (FastAPI) 
-and TypeScript (Next.js). The goal is to create a simple yet functional platform for sharing posts and interacting with other users.
+and React. The goal is to create a simple yet functional platform for sharing posts and interacting with other users.
 
 # Todo List
 * Setup Frontend
@@ -22,6 +22,6 @@ and TypeScript (Next.js). The goal is to create a simple yet functional platform
 
 ## Tech Stack
 * **Backend**: FastAPI(Python)
-* **Frontend**: Next.js (TypeScript)
+* **Frontend**: Vite + React
 * **Database**: PostgreSQL
 * **Authentication**: JWT using OAuth2 Password flow schema in FastAPI
