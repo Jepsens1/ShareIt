@@ -1,35 +1,34 @@
 import {useEffect, useState} from "react";
-import api from "../utils/api.ts";
+import {get} from "../utils/api.ts";
 import PostCard from "./PostCard.tsx";
 import type {Post} from "../types/post.ts";
+import StatusCodes from "../utils/statuscodes.ts";
 
 
 export default function PostList() {
     const [posts, setPosts] = useState<Post[]>([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
     const fetchPosts = async () => {
         setError(null);
         setLoading(true)
-        await api.get("/posts")
-            .then(function (response) {
-                //handle success
-                setPosts(response.data);
-                setLoading(false);
-            }).catch(function (error) {
-                    if(error.response?.status === 429) {
-                        setError("Rate limit exceeded.");
-                    }
-                    else {
-                        const message = error.response?.data?.message ||
-                        error.message ||
-                        "Unknown error occurred while fetching posts.";
-                        setError(message);
-                    }
-                console.log("Error fetching posts...", error);
-            })
+        try{
+            const response = await get("/posts");
+            setPosts(response.data);
+        } catch (error) {
+            if (error.response?.status === StatusCodes.RATE_LIMIT_EXCEEDED) {
+                setError("Rate limit exceeded");
+            } else {
+                const message = error.response?.data?.message ||
+                    error.message ||
+                    "Unknown error occurred while fetching posts.";
+                setError(message);
+            }
+        } finally {
+            setLoading(false);
         }
+    }
     useEffect(() => {
         fetchPosts();
     }, []);
