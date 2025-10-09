@@ -1,12 +1,13 @@
-from fastapi import APIRouter, Query
-from typing import Annotated
+from fastapi import APIRouter, Query, Depends
+from typing import Annotated, Optional, Literal
 from uuid import UUID
-from schemas.post_schemas import PostUpdate, PostCreate, PostPublic, PostWithComments, PostWithLikes
+from schemas.post_schemas import PostUpdate, PostCreate, PostPublic, PostWithComments, PostWithLikes, PostPublicAll
 from schemas.likes_schemas import LikePublic
 from schemas.comment_schemas import CommentPublic, CommentCreate
 import services.post_service
 from dependencies import SessionDep
 from services.authentication_service import CurrentUser
+from pydantic import BaseModel, Field
 
 """
 post_router.py
@@ -29,6 +30,7 @@ Endpoints:
 router = APIRouter(prefix='/posts', tags=['posts'])
 
 
+
 @router.post('/', response_model=PostPublic)
 async def create_post(post: PostCreate, session: SessionDep, current_user: CurrentUser):
     """
@@ -47,12 +49,17 @@ async def get_posts(session: SessionDep, offset: int = 0, limit: Annotated[int, 
     return posts
 
 
-@router.get('/{post_id}', response_model=PostPublic)
-async def get_post_by_id(post_id: UUID, session: SessionDep):
+@router.get('/{post_id}', response_model=PostPublicAll)
+async def get_post_by_id(post_id: UUID, session: SessionDep, include_comments: bool = False, include_likes: bool = False):
     """
     Get a specific post by ID.
     """
-    post = services.post_service.get_post(post_id, session)
+    if include_likes:
+        post = services.post_service.get_post_with_liked_by(post_id, session)
+    else:
+        post = services.post_service.get_post(post_id, session)
+    if not include_comments:
+        post.comments = []
     return post
 
 

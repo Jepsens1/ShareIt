@@ -2,12 +2,15 @@
 A minimal social media project built with Python (FastAPI) 
 and React. The goal is to create a simple yet functional platform for sharing posts and interacting with other users.
 
+> [!WARNING]
+> This is a project used for educational purposes, this is just to get my hands dirty with FastAPI and React
 # Todo List
 * Setup Frontend
   * Components
-    * Sidebar Component
-    * Home Screen Component
-    * Post Card Component
+    * ~~Sidebar Component~~
+    * ~~Home Screen~~
+    * ~~Login~~
+    * ~~Signup~~
     * Modify User Component
     * View Other User Component
 * Finalize docker image to run backend, frontend and database

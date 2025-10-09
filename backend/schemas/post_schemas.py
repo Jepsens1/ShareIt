@@ -28,6 +28,10 @@ class PostPublic(PostBase):
     updated_at: datetime | None = None
     likes_count: int = 0
     comments_count: int = 0
+
+class PostPublicAll(PostPublic):
+    comments: list[CommentPublic]
+    liked_by : list[str] = []
     
 class PostWithComments(PostPublic):
     """Public representation of a post including comments, returned in API responses."""

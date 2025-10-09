@@ -1,3 +1,5 @@
+import type Comment from "./comment.ts";
+
 export interface Post {
     id: string;
     owner_id: string;
@@ -7,4 +9,6 @@ export interface Post {
     updated_at: string | null;
     likes_count: number;
     comments_count: number;
+    comments: Comment[] | null;
+    liked_by: string[] | null;
 }

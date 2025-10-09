@@ -8,7 +8,7 @@ interface PostCardProps {
 export default function PostCard({post}: PostCardProps) {
     return (
         <>
-            <Link to={`/posts/${post.id}`} className="flex flex-col p-5 rounded-xl bg-gray-800 text-green-500 hover:bg-green-600 hover:text-white transition-all duration-300
+            <Link to={`/post/${post.id}`} className="flex flex-col p-5 rounded-xl bg-gray-800 text-green-500 hover:bg-green-600 hover:text-white transition-all duration-300
             group sm:max-w-3/4 w-full max-h-3/4">
         <div>
             <h3 className="font-bold text-lg mb-1">{post.title}</h3>

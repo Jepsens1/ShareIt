@@ -14,7 +14,7 @@ export default function PostList() {
         setError(null);
         setLoading(true)
         try{
-            const response = await get("/posts");
+            const response = await get("/posts", {"Content-Type": "application/json"});
             setPosts(response.data);
         } catch (error) {
             if (error.response?.status === StatusCodes.RATE_LIMIT_EXCEEDED) {
