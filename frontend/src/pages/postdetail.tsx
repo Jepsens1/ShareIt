@@ -2,6 +2,7 @@ import {useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {get} from "../utils/api.ts";
 import type {Post} from "../types/post.ts";
+import CreateComment from "../components/create-comment.tsx";
 
 export default function PostDetail() {
     const params = useParams();
@@ -46,7 +47,7 @@ export default function PostDetail() {
         )
     }
     return (
-        <div className="flex flex-col items-center bg-gray-50 pt-8 p-2 h-screen">
+        <div className="flex flex-col items-center bg-gray-50 pt-8 p-3 h-screen">
             <div className="rounded-xl bg-gray-800 text-green-500
             w-full sm:max-w-3/4 p-5 min-h-11/12">
                 <h3 className="font-bold text-lg mb-1">{postDetail?.title}</h3>
@@ -56,14 +57,15 @@ export default function PostDetail() {
                     <p><span className="font-semibold">Likes:</span> {postDetail?.likes_count}</p>
                     <p><span className="font-semibold">Comments:</span> {postDetail?.comments_count}</p>
                 </div>
-                <div className="flex flex-col items-end text-[10px] text-gray-400 mt-auto ">
+                <div className="flex flex-col items-end text-[10px] text-gray-400 mt-auto py-3">
                     <p><span className="font-semibold">ID:</span> {postDetail?.id}</p>
                     <p><span className="font-semibold">Created at:</span> {new Date(postDetail?.created_at).toLocaleString()}</p>
                     {postDetail?.updated_at && (
                         <p><span className="font-semibold">Last Edited:</span> {new Date(postDetail?.updated_at).toLocaleString()}</p>
                     )}
                 </div>
-                <div className="flex flex-col w-full max-h-64 overflow-y-auto bg-gray-900 rounded-lg p-3 space-y-2">
+                <CreateComment postId={postDetail?.id} onCommentCreated={fetchPost}/>
+                <div className="flex flex-col w-full max-h-2/3 overflow-y-auto bg-gray-900 rounded-lg p-3 space-y-3">
                     {postDetail?.comments?.length ? (
                         postDetail.comments.map((comment) => (
                             <div key={comment.id} className="w-full text-sm text-gray-200 border-b border-gray-700 pb-1">
