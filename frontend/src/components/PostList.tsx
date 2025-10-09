@@ -54,8 +54,8 @@ export default function PostList() {
         )
     }
     return (
-        <div className="bg-gray-50 grid gap-4
-        grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
+        <div className="bg-gray-50 flex flex-col gap-2 p-2 pt-8
+        sm:justify-center sm:items-center">
             {posts.map((post) => (
                 <PostCard key={post.id} post={post} />
             ))}

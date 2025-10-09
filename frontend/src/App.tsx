@@ -17,7 +17,7 @@ function App() {
                       <Route path="/signin" element={<SignIn/>}/>
                       <Route path="/signup" element={<SignUp/>}/>
                       <Route path="/create-post" element={<CreatePost/>}/>
-                      <Route path="*" element={<div>Page not found</div>}/>
+                      <Route path="*" element={<div className="flex items-center justify-center h-screen w-full">Page not Found</div>}/>
                   </Routes>
               </main>
           </div>

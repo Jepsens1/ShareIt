@@ -1,4 +1,5 @@
 import type {Post} from "../types/post.ts";
+import {Link} from "react-router";
 
 interface PostCardProps {
     post: Post
@@ -6,8 +7,10 @@ interface PostCardProps {
 
 export default function PostCard({post}: PostCardProps) {
     return (
-        <div className="flex flex-col p-5 rounded-md bg-gray-800 text-green-500 w-full hover:bg-green-600 hover:text-white transition-all duration-300
-    group">
+        <>
+            <Link to={`/posts/${post.id}`} className="flex flex-col p-5 rounded-xl bg-gray-800 text-green-500 hover:bg-green-600 hover:text-white transition-all duration-300
+            group sm:max-w-3/4 w-full max-h-3/4">
+        <div>
             <h3 className="font-bold text-lg mb-1">{post.title}</h3>
             <p className="text-sm">{post.content}</p>
 
@@ -23,5 +26,7 @@ export default function PostCard({post}: PostCardProps) {
                 )}
             </div>
         </div>
+            </Link>
+        </>
     );
 }
