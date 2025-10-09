@@ -25,7 +25,7 @@ export default function CreateComment({postId, onCommentCreated}: {postId: strin
     if (loading) {
         return (
             <div className="flex flex-col justify-center items-center max-h-56">
-                <p className="text-gray-600 text-lg animate-pulse">Creating post</p>
+                <p className="text-gray-600 text-lg animate-pulse">Commenting on post</p>
             </div>
         )
     }

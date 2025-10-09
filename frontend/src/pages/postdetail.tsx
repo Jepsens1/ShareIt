@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {get} from "../utils/api.ts";
 import type {Post} from "../types/post.ts";
 import CreateComment from "../components/create-comment.tsx";
+import LikeComponent from "../components/like-component.tsx";
 
 export default function PostDetail() {
     const params = useParams();
@@ -64,7 +65,11 @@ export default function PostDetail() {
                         <p><span className="font-semibold">Last Edited:</span> {new Date(postDetail?.updated_at).toLocaleString()}</p>
                     )}
                 </div>
-                <CreateComment postId={postDetail?.id} onCommentCreated={fetchPost}/>
+                <div className="flex justify-evenly text-sm text-gray-400 pb-2">
+                    <LikeComponent postId={postDetail?.id} likeCount={postDetail?.likes_count} onPostLiked={fetchPost}/>
+                    <p><span className="font-semibold">Comments:</span> {postDetail?.comments_count}</p>
+                </div>
+                    <CreateComment postId={postDetail?.id} onCommentCreated={fetchPost}/>
                 <div className="flex flex-col w-full max-h-2/3 overflow-y-auto bg-gray-900 rounded-lg p-3 space-y-3">
                     {postDetail?.comments?.length ? (
                         postDetail.comments.map((comment) => (
