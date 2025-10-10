@@ -5,6 +5,8 @@ import PostList from "./components/PostList.tsx";
 import SignUp from "./pages/signup.tsx";
 import CreatePost from "./pages/create-post.tsx";
 import PostDetail from "./pages/postdetail.tsx";
+import ProfilePage from "./pages/profile-page.tsx";
+import ProtectedRoutes from "./utils/ProtectedRoutes.tsx";
 
 function App() {
 
@@ -17,8 +19,11 @@ function App() {
                       <Route path="/" element={<PostList/>}/>
                       <Route path="/signin" element={<SignIn/>}/>
                       <Route path="/signup" element={<SignUp/>}/>
-                      <Route path="/create-post" element={<CreatePost/>}/>
                       <Route path="post/:postId" element={<PostDetail/>}/>
+                      <Route element={<ProtectedRoutes/>}>
+                          <Route path="/create-post" element={<CreatePost/>}/>
+                          <Route path="/profile" element={<ProfilePage/>}/>
+                      </Route>
                       <Route path="*" element={<div className="flex items-center justify-center h-screen w-full">Page not Found</div>}/>
                   </Routes>
               </main>

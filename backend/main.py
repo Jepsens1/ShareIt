@@ -42,7 +42,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 #rate limit using slowapi
-limiter = Limiter(key_func=get_remote_address, strategy="moving-window",default_limits=["10/minute"])
+limiter = Limiter(key_func=get_remote_address, strategy="moving-window",default_limits=["100/minute"])
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler) # type: ignore
 app.add_middleware(SlowAPIMiddleware)

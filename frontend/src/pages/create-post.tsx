@@ -13,8 +13,9 @@ export default function CreatePost() {
         setLoading(true);
         e.preventDefault();
         try {
-            await post("/posts", {title: title, content: content}, {"Content-Type": "application/json"});
-            navigate("/");
+            const response = await post("/posts", {title: title, content: content}, {"Content-Type": "application/json"});
+            const postId = response.data.id;
+            navigate(`/post/${postId}`);
         } catch (error) {
             setError(`Server error occurred - please try again later: ${error}`);
             console.error("Network/Server error", error);

@@ -11,8 +11,7 @@ export default function CreateComment({postId, onCommentCreated}: {postId: strin
         setLoading(true);
         e.preventDefault();
         try {
-            const response = await post(`/posts/${postId}/comments`, {content: comment}, {"Content-Type": "application/json",
-            "Authorization": "Bearer"});
+            const response = await post(`/posts/${postId}/comments`, {content: comment}, {"Content-Type": "application/json"});
             console.log(response.data);
             onCommentCreated();
         } catch (error) {

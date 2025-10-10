@@ -65,7 +65,7 @@ export default function PostDetail() {
                         <p><span className="font-semibold">Last Edited:</span> {new Date(postDetail?.updated_at).toLocaleString()}</p>
                     )}
                 </div>
-                <div className="flex justify-evenly text-sm text-gray-400 pb-2">
+                <div className="flex text-sm text-gray-400 pb-2">
                     <LikeComponent postId={postDetail?.id} likeCount={postDetail?.likes_count} onPostLiked={fetchPost}/>
                     <p><span className="font-semibold">Comments:</span> {postDetail?.comments_count}</p>
                 </div>

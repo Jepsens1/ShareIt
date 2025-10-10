@@ -11,7 +11,7 @@ export default function LikeComponent({postId, onPostLiked, likeCount}: {postId:
         setError(null);
         setLoading(true);
         try {
-            const response = await post(`/posts/${postId}/like`, {}, {"Content-Type": "application/json", "Authorization": "Bearer"});
+            const response = await post(`/posts/${postId}/like`, {}, {"Content-Type": "application/json"});
             console.log(response.data);
             onPostLiked();
         } catch (error) {

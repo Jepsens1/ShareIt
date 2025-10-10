@@ -9,7 +9,9 @@ export default function SideNavbar() {
                 <SideBarIcon text="Home" goto="/" icon={<FaHome size={28}/>}/>
                 <SideBarIcon text="Profile" goto="/profile" icon={<FaUser size={28}/>}/>
                 <SideBarIcon text="Create Post" goto="/create-post" icon={<FaBlog size={28}/>}/>
-                {isLoggedIn ? <SideBarIcon text="Sign out" goto="/signout" icon={<FaSignOutAlt size="28"/>}/> : <SideBarIcon text="Sign in" goto="/signin" icon={<FaSignInAlt size="28"/>}/>}
+                {!isLoggedIn && (
+                    <SideBarIcon text="Sign in" goto="/signin" icon={<FaSignInAlt size={28} />} />
+                )}
             </div>
         </nav>
     )
