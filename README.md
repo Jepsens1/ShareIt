@@ -25,7 +25,7 @@ cd ShareIt
 
 ### Create virtual environment
 ```
-python -m venv .venv
+python3 -m venv .venv
 ```
 #### Activate on Windows
 ```bash
@@ -75,7 +75,7 @@ docker compose up -d
 cd ShareIt/backend
 alembic upgrade head
 // create file logs/app.log.jsonl
-python3 ./main.py
+python3 main.py
 ```
 
 
