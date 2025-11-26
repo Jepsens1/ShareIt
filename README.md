@@ -2,10 +2,7 @@
 A minimal blog post API endpoints for • Creating user • Create or view posts • Like & Comment • Manage User Profile 
 
 ## Motivation
-I wanted to dive more into Python and initially wanted to create a website & API using Django, but quickly scraped that idea. Then i happened to find a new framework
-called FastAPI, and it immediately caught my attention due to it's high-speed performance, validation using Pydantic and Starlette,
-and how quickly to develop new features. So i decides to give Python and FastAPI framework a try. It's a minimal blog post API, but i wanted to make a project
-that covered all aspects of FastAPI and Python.
+I wanted to dive more into Python and initially wanted to create a website & API using Django, but quickly scrapped that idea. Then I happened to find a new framework called FastAPI, and it immediately caught my attention due to its high-speed performance, validation using Pydantic and Starlette, and how quickly to develop new features. So I decided to give Python and FastAPI framework a try. It's a minimal blog post API, but I wanted to make a project that covered all aspects of FastAPI and Python.
 
 ## Tech Stack
 * **Backend**: FastAPI(Python)
