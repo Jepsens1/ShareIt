@@ -74,11 +74,37 @@ docker compose up -d
 ```bash
 cd ShareIt/backend
 alembic upgrade head
+// create file logs/app.log.jsonl
 python3 ./main.py
 ```
-## Features
-* **User Registration & Login**: Create an account and log in to access the platform.
-* **Create & View Posts**: Create your own post and view other users posts.
-* **User Profiles**: Manage your account and see your posts, view which post you have liked or commented
-* **Like & Comment**: Able to like/unlike and/or comment or remove comment on a post
 
+
+## 📖 Endpoints
+- `POST /users` - Create user
+- `GET /users` - Read Users
+- `GET /users/me` - Read your user (requires auth)
+- `PUT /users/me` - Update your user (requires auth)
+- `DELETE /users/me` - Delete your user (requires auth)
+- `GET /users/{user_id}` - Read user by ID
+- `GET /users/{user_id}/posts` - Read user posts by ID
+- `GET /users/{user_id}/comments` - Read user comments by ID
+- `GET /users/{user_id}/likes` - Read user likes by ID
+
+- `POST /posts` - Create Post (requires auth)
+- `GET /posts` - Get Posts
+- `GET /posts/{post_id}` - Get Post by ID
+- `DELETE /posts/{post_id}` - Delete Post by ID (requires auth)
+- `PUT /posts/{post_id}` - Update Post by ID (requires auth)
+- `GET /posts/{post_id}/comments` - Get comments by Post ID
+- `POST /posts/{post_id}/comments` - Create comments to Post by ID (requires auth)
+- `GET /posts/{post_id}/likes` - Get likes on post by ID 
+- `POST /posts/{post_id}/like` - Add like on post by ID  (requires auth)
+- `DELETE /posts/{post_id}/like` - Delete like on post by ID  (requires auth)
+
+- `GET /comments/{comment_id}` - Get comment by ID
+- `PUT /comments/{comment_id}` - Update comment by ID (requires auth)
+- `DELETE /comments/{comment_id}` - Delete comment by ID (requires auth)
+
+- `POST /auth/token` - Login endpoint using Oauth2 flow
+- `POST /auth/refresh` - Generate Refresh token
+- `DELETE /auth/logout` - Revoke token
