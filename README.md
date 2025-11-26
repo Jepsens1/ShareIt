@@ -6,8 +6,6 @@ I wanted to dive more into Python and initially wanted to create a website & API
 called FastAPI, and it immediately caught my attention due to it's high-speed performance, validation using Pydantic and Starlette,
 and how quickly to develop new features. So i decides to give Python and FastAPI framework a try. It's a minimal blog post API, but i wanted to make a project
 that covered all aspects of FastAPI and Python.
-. So i decides to give Python and FastAPI framework a try. It's a minimal blog post API, but i wanted to make a project
-that covered all aspects of FastAPI and Python.
 
 ## Tech Stack
 * **Backend**: FastAPI(Python)
